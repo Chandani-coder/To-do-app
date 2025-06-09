@@ -1,0 +1,29 @@
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { Todo } from "@/types/todo";
+import TodoHeader from "@/components/TodoHeader";
+import TodoStats from "@/components/TodoStats";
+import TodoInput from "@/components/TodoInput";
+import TodoList from "@/components/TodoList";
+import TodoFooter from "@/components/TodoFooter";
+
+const Index = () => {
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const { toast } = useToast();
+
+  const addTodo = (text: string) => {
+    if (text.trim() === "") {
+      toast({
+        title: "Please enter a task",
+        description: "Task cannot be empty",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const newTodo: Todo = {
+      id: Date.now(),
+      text: text.trim(),
+      completed: false,
+      createdAt: new Date(),
+    };
