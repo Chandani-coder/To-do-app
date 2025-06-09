@@ -1,0 +1,28 @@
+import { Card } from "@/components/ui/card";
+
+interface TodoStatsProps {
+  completedCount: number;
+  totalCount: number;
+}
+
+const TodoStats = ({ completedCount, totalCount }: TodoStatsProps) => {
+  if (totalCount === 0) return null;
+
+  return (
+    <Card className="p-4 mb-6 bg-white/60 backdrop-blur-sm border-white/20">
+      <div className="flex justify-between items-center text-sm">
+        <span className="text-muted-foreground">
+          Progress: {completedCount} of {totalCount} tasks completed
+        </span>
+        <div className="w-32 bg-gray-200 rounded-full h-2">
+          <div 
+            className="bg-gradient-to-r from-green-400 to-green-600 h-2 rounded-full transition-all duration-300"
+            style={{ width: totalCount > 0 ? `${(completedCount / totalCount) * 100}%` : '0%' }}
+          ></div>
+        </div>
+      </div>
+    </Card>
+  );
+};
+
+export default TodoStats;
