@@ -1,0 +1,60 @@
+import { Check, Square, Trash } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Todo } from "@/types/todo";
+
+interface TodoItemProps {
+  todo: Todo;
+  onToggle: (id: number) => void;
+  onDelete: (id: number) => void;
+}
+
+const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
+  return (
+    <Card 
+      className={`p-4 bg-white/70 backdrop-blur-sm border-white/20 transition-all duration-200 hover:shadow-md hover:bg-white/80 ${
+        todo.completed ? 'opacity-75' : ''
+      }`}
+    >
+      <div className="flex items-center gap-3">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => onToggle(todo.id)}
+          className={`p-1 rounded-full transition-all duration-200 ${
+            todo.completed 
+              ? 'text-green-600 hover:text-green-700 hover:bg-green-50' 
+              : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'
+          }`}
+        >
+          {todo.completed ? (
+            <Check className="w-5 h-5" />
+          ) : (
+            <Square className="w-5 h-5" />
+          )}
+        </Button>
+        
+        <span 
+          className={`flex-1 text-lg transition-all duration-200 ${
+            todo.completed 
+              ? 'line-through text-gray-500' 
+              : 'text-gray-900'
+          }`}
+        >
+          {todo.text}
+        </span>
+        
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => onDelete(todo.id)}
+          className="p-1 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all duration-200"
+        >
+          <Trash className="w-4 h-4" />
+        </Button>
+      </div>
+    </Card>
+  );
+};
+
+export default TodoItem;
