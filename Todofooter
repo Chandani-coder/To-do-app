@@ -1,0 +1,15 @@
+interface TodoFooterProps {
+  showFooter: boolean;
+}
+
+const TodoFooter = ({ showFooter }: TodoFooterProps) => {
+  if (!showFooter) return null;
+
+  return (
+    <div className="text-center mt-8 text-sm text-muted-foreground">
+      <p>✨ Keep going! You're doing great!</p>
+    </div>
+  );
+};
+
+export default TodoFooter;
