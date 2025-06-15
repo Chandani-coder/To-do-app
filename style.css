@@ -1,0 +1,93 @@
+:root {
+  --bg: #f0f0f0;
+  --text: #333;
+  --card: #fff;
+  --accent: #007bff;
+}
+
+body.dark {
+  --bg: #1e1e1e;
+  --text: #eee;
+  --card: #2c2c2c;
+  --accent: #66aaff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input, button {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+}
+
+input {
+  flex: 1;
+}
+
+form {
+  display: flex;
+  margin-top: 1rem;
+}
+
+#todo-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+li {
+  background: var(--card);
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+}
+
+li.completed span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.filters {
+  margin-top: 1rem;
+}
+
+.filters button {
+  margin-right: 0.5rem;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--accent);
+  cursor: pointer;
+}
+
+.filters .active {
+  background: var(--accent);
+  color: white;
+}
+
+footer {
+  margin-top: 1rem;
+}
